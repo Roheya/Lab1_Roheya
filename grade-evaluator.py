@@ -45,7 +45,7 @@ def grade_evaluator(filename):
         if row["group"] == "Formative":
             weight = int(row["weight"])
             formative_weight += weight
-    print(f"the formative assignment adds up to {formative_weight}")
+    print(f"the formative assignment adds up to {formative_weight} exactly")
     
     # Ensuring that the summative weight adds up to 40
     summative_weight = 0
