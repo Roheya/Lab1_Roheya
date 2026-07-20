@@ -24,6 +24,7 @@ def grade_evaluator(filename):
             "score": score,
             "weight":: weight
         })
-
-
-        
+# grade validation
+for row in assignments:
+    if score < 0 or score > 100:
+        print(f"Invalid score {score} in {row["assignment""])        
