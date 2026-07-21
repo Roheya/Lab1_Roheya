@@ -17,7 +17,7 @@ def grade_evaluator(filename):
         weight = parts[-1]
         score = parts[-2]
         group = parts[-3]
-        name = "".join(parts[:-3])
+        name = " ".join(parts[:-3])
         assignments.append({
             "assignment": name,
             "group": group,
@@ -87,9 +87,9 @@ def grade_evaluator(filename):
     #percentage for formative
     formative_percentage =(formative_weighted_score/formative_weight)*100
     if formative_percentage >= 50:
-        print(f"Result: PASSED with a percentage of {formative_percentage}")
+        print(f"Result: PASSED Formative with a percentage of {formative_percentage}")
     else:
-        print(f"Result: FAILED with a percentage of {formative_percentage}")
+        print(f"Result: FAILED Formative with a percentage of {formative_percentage}")
 
     #checking percentage score for summative
     summative_weighted_score = 0
@@ -102,9 +102,29 @@ def grade_evaluator(filename):
             summative_weight += weight
     summative_percentage = (summative_weighted_score/summative_weight)*100
     if summative_percentage >= 50:
-        print(f"Result: PASSED with a percentage of {summative_percentage}")
+        print(f"Result: PASSED Summative with a percentage of {summative_percentage}")
     else:
-        print(f"Result: FAILED with a percentage of {summative_percentage}")
+        print(f"Result: FAILED Summative with a percentage of {summative_percentage}")
 
-    print(f"the student PASSED with a percentage of {summative_percentage} in the submmative and a percentage of {formative_percentage} in the formative")
+    print("Status: The student has passed in both categories")
+
+    #Resubmission logic
+    failed_formatives = []
+    for row in assignments:
+        if row["group"] == "Formative" and int(row["score"]) < 50:
+            failed_formatives.append(row)
+
+    if failed_formatives:
+        highest_weight = 0
+        for row in failed_formatives:
+            weight = int(row["weight"])
+            if weight > highest_weight:
+                highest_weight = weight
+
+        print("Available for resubmission:")
+        for row in failed_formatives:
+            if int(row["weight"]) == highest_weight:
+                print(f"{row['assignment']}")
+    else:
+        print("No formative resubmissions required")
 grade_evaluator("grades.csv")
