@@ -24,7 +24,13 @@ def grade_evaluator(filename):
             "score": score,
             "weight": weight
         })
-    # grade validation
+    #Protection clause for empty files
+    if not assignments:
+        print("Error: grades.csv file is empty")
+        return
+
+   
+    #grade validation
 
     for row in assignments:
         score = int(row["score"])
@@ -105,9 +111,10 @@ def grade_evaluator(filename):
         print(f"Result: PASSED Summative with a percentage of {summative_percentage}")
     else:
         print(f"Result: FAILED Summative with a percentage of {summative_percentage}")
-
-    print("Status: The student has passed in both categories")
-
+    if summative_percentage >= 50 and formative_percentage >= 50:
+        print("Status: The student has passed in both categories")
+    else:
+        print("status: The student has FAILED")
     #Resubmission logic
     failed_formatives = []
     for row in assignments:
