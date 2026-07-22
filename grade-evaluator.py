@@ -11,7 +11,7 @@ def grade_evaluator(filename):
         return
 
     for line in lines[1:]:
-        parts = line.split()
+        parts = line.strip().split(",")
         if len(parts) < 4:
             continue
         weight = parts[-1]
