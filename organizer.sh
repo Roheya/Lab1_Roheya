@@ -28,7 +28,7 @@ if [ -f "$Existing_file" ]; then
 
 	#Logging:appending details to organizer.log
 	Log_file="organizer.log"
-	echo "$Timestamp | original: $Existing_file | archived as: $Aechive_DIR/$NEW_file" >> "$Log_file"
+	echo "$Timestamp | original: $Existing_file | archived as: $Archive_DIR/$New_file" >> "$Log_file"
         echo "Logged this operation to $Log_file"
 else
     echo "Error: $SOURCE_FILE not found. Nothing to archive."
