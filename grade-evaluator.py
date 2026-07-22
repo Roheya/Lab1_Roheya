@@ -14,10 +14,10 @@ def grade_evaluator(filename):
         parts = line.strip().split(",")
         if len(parts) < 4:
             continue
-        weight = parts[-1]
-        score = parts[-2]
-        group = parts[-3]
-        name = " ".join(parts[:-3])
+        name = parts[0]
+        group = parts[1]
+        score = int(parts[2])
+        weight = int(parts[3])
         assignments.append({
             "assignment": name,
             "group": group,
