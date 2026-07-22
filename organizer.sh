@@ -22,9 +22,9 @@ if [ -f "$Existing_file" ]; then
         mv $Existing_file $Archive_DIR/$New_file 
         echo "Archives $Existing_file as $Archive_DIR/$New_file"
 
-        #wokspace Reset: creating an empty grades.csv file
+	#wokspace Reset: creating an empty grades.csv file
         touch $Existing_file
-	echo"Created a new empty file :$Existing_file"
+	echo "Created a new empty file :$Existing_file"
 
 	#Logging:appending details to organizer.log
 	Log_file="organizer.log"
